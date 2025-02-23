@@ -7,8 +7,8 @@ It's a registration form and user data display web application inspired by the d
 Setup Instructions
 
 1- Clone the repository:
-git clone <repository-url>
-cd <repository-folder>
+	git clone <repository-url>
+	cd <repository-folder>
 2- Open index.html in your preferred browser.
 
 
