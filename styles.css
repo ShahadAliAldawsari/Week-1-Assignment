@@ -1,11 +1,15 @@
 body {
-    background-color: #f3f4f6;
-    color: #1f2937;
+    /* background-color: #f3f4f6; */
+    background-image: url('./images/Salamah_background.svg');
+    /* color: #1f3637; */
     font-family: Arial, sans-serif;
-    text-align: right;
     margin: 0;
     padding: 0;
-    direction: rtl;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
 }
 
 .headerPar {
@@ -29,8 +33,9 @@ body {
 }
 
 .logo {
-    text-align: center;
-    margin: 1.5rem 0;
+    text-align: left;
+    margin: 2rem;
+
 }
 
 form {
@@ -38,9 +43,10 @@ form {
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.8s ease;
+    text-align: left;
 }
 
 form h2 {
@@ -55,13 +61,20 @@ form h2 {
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
+    counter-reset: step;
+    margin: 5rem 0;
+    /* padding-left: 8rem;
+    padding-right: 8rem; */
+    text-align: center;
+    
 }
 
 .prog-step {
-    width: 32px;
-    height: 32px;
-    background-color: #d1d5db;
+    width: 2.1875rem;
+    height: 2.1875rem;
+    background-color: #bfbfbf;
+    /* border-color: #bfbfbf; */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -69,43 +82,57 @@ form h2 {
     color: #fff;
     position: relative;
     z-index: 1;
+    display: flex;
 }
 
-.prog-step.active {
+
+.progressbar::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+    height: 1px;
+    width: 100%;
+    background-color: #bfbfbf;    
+}
+
+.prog-step::before{
+    counter-increment: step;
+    content: counter(step);
+}
+
+.prog-step-active{
     background-color: #10b981;
+    color: #f3f4f6;
 }
 
 .prog-step::after {
-    content: '';
+    content: attr(data-title);
     position: absolute;
-    width: 100%;
-    height: 4px;
-    background-color: #d1d5db;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
-    z-index: 0;
+    top: calc(100% + 0.75rem);
+    font-size: 0.9rem;
+    color: #666;
 }
 
-.prog-step:last-child::after {
-    display: none;
-}
-
-input[type="text"],
+input[type="text"],[type="password"],
 select {
     width: 100%;
     padding: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     border: 1px solid #d1d5db;
     border-radius: 0.375rem;
     box-sizing: border-box;
-    transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;   
 }
 
 input:focus,
 select:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
+}
+
+input:hover{
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4);
 }
 
 button[type="submit"] {
@@ -126,7 +153,8 @@ button[type="submit"]:hover {
 .error {
     color: #ef4444;
     font-size: 0.875rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 5rem;
 }
 
 .CRN {
@@ -136,6 +164,46 @@ button[type="submit"]:hover {
     font-size: 0.875rem;
 }
 
+.CR{
+    color: #059669;
+    text-align: center;
+}
+
+
+.get-data-button {
+    width: 30rem;
+    background-color: #14b9c8;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* margin: 3rem; */
+    margin-top: 2rem;
+    /* margin-left: 2rem; */
+    margin-bottom: 3rem;
+}
+
+.get-data-button:hover {
+    background-color: #0e9eab;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.get-data-button:active {
+    background-color: #0e9eab;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+}
+
+.get-data-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0e9eab;
+}
+
+.dataList{
+    text-align: left;
+}
 @media screen and (max-width: 640px) {
     form {
         padding: 1rem;
@@ -155,4 +223,5 @@ button[type="submit"]:hover {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
